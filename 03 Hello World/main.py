@@ -1,18 +1,21 @@
-from openai import OpenAi
+from openai import OpenAI
+from dotenv import load_dotenv
+
 load_dotenv()
+client = OpenAI()
 
-client = OpenAi()
+print("working till here")
 
-response = client.models.generate_content (
-    model = "gemini-2.0-flash-lite",
-    contents=[{
-        "role": "user",
-        "parts": [
-            {"text": "Hello, how are you!!"}
-        ]
-    }]
-    # contents="Explain how AI works in a few words"
+#Zero Shot Prompting
+
+response = client.chat.completions.create (
+    model = "gpt-4.1-nano",
+    messages = [
+        {"role": "System", "content": "Hello, how are you?"},
+        {"role": "user", "content": "Hello, how are you?"},
+        {"role": "user", "content": "Hello, how are you?"},
+        {"role": "user", "content": "Hello, how are you?"},
+    ]
 )
 
-
-print("\n\n", response.text, "\n\n")
+print("\n\n", response.choices[0].message.content, "\n\n")
