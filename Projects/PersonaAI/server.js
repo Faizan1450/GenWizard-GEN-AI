@@ -11,7 +11,7 @@ const PROFILE = fs.readFileSync("./profile.json");
 const chatHistory = fs.readFileSync("./_chat.txt");
 const currentTime = new Date().toLocaleTimeString();
 
-const prompt = SYSTEM_PROMPT + "\n\n" + "My Profile (Syed Faizan Ali)\n" + PROFILE + "\n\n" + "Chat History of me and shruti\n" + chatHistory + "\n\n" + "Currently Time is: " + currentTime;
+const prompt = SYSTEM_PROMPT + "\n\n" + PROFILE + "\n\n" + chatHistory + "\n\n" + "Currently Time is: " + currentTime;
 
 let messages = [{ "role": "system", "content": prompt }];
 
